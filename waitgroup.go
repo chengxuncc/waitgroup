@@ -45,12 +45,13 @@ func (wg *WaitGroup) Wait() {
 		wg.ch = make(chan struct{})
 
 	}
+	ch := wg.ch
 	wg.m.Unlock()
 	// In case when counter=0, but wg.ch has not been initiated.
 	if atomic.LoadInt32(&wg.counter) == 0 {
 		return
 
 	}
-	<-wg.ch
+	<-ch
 
 }
