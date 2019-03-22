@@ -12,4 +12,5 @@
 // 2. Unlike sync.WaitGroup, WaitGroup.Add here can be called at any time
 //    without race issue. Even call with a positive delta that occur when the
 //    counter is zero, which is prevented from sync.WaitGroup.
-package waitgroup //import "github.com/hzxuzhonghu/waitgroup"
+//3.  Expose waitgroup counter status.
+package waitgroup //import "github.com/chengxuncc/waitgroup"
