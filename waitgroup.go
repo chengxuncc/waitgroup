@@ -20,7 +20,6 @@ func (wg *WaitGroup) Add(delta int) {
 	// Panic if negative
 	if v < 0 {
 		panic("sync: negative WaitGroup counter")
-
 	} else if v == 0 {
 		wg.m.Lock()
 		defer wg.m.Unlock()
@@ -34,14 +33,12 @@ func (wg *WaitGroup) Add(delta int) {
 // Done decrements the WaitGroup counter.
 func (wg *WaitGroup) Done() {
 	wg.Add(-1)
-
 }
 
 // Wait blocks until the WaitGroup counter is zero.
 func (wg *WaitGroup) Wait() {
 	if atomic.LoadInt32(&wg.counter) == 0 {
 		return
-
 	}
 	wg.m.Lock()
 	if wg.ch == nil {
@@ -56,4 +53,8 @@ func (wg *WaitGroup) Wait() {
 
 	}
 	<-ch
+}
+
+func (wg *WaitGroup) Counter() int32 {
+	return atomic.LoadInt32(&wg.counter)
 }

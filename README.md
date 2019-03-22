@@ -1,5 +1,2 @@
-# waitgroup
-
-## reinit a waitgroup using chan
-
-## have no race when call `Wait` after `counter=0`
+# WaitGroup
+A WaitGroup have no race when call `Wait` after `counter==0`.
